@@ -16,7 +16,7 @@
 
 metadata:
   # Manually Configured Metadata Section.
-  name: SQLITE
+  name: SQLITE_SERRA
   apiname: sqlite
   spec_version: '1'
 
