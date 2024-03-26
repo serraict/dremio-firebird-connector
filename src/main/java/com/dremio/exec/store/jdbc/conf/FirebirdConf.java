@@ -34,13 +34,13 @@ import com.google.common.annotations.VisibleForTesting;
 import io.protostuff.Tag;
 
 /**
- * Configuration for SQLite sources.
+ * Configuration for Firebird sources.
  */
-@SourceType(value = "SQLITE", label = "SQLite", uiConfig = "sqlite-layout.json", externalQuerySupported = true)
-public class SqliteConf extends AbstractArpConf<SqliteConf> {
-  private static final String ARP_FILENAME = "arp/implementation/sqlite-arp.yaml";
+@SourceType(value = "Firebird", label = "Firebird", uiConfig = "firebird-layout.json", externalQuerySupported = true)
+public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
+  private static final String ARP_FILENAME = "arp/implementation/Firebird-arp.yaml";
   private static final ArpDialect ARP_DIALECT = AbstractArpConf.loadArpFile(ARP_FILENAME, (ArpDialect::new));
-  private static final String DRIVER = "org.sqlite.JDBC";
+  private static final String DRIVER = "org.firebird.JDBC";
 
   @NotBlank
   @Tag(1)
@@ -80,7 +80,7 @@ public class SqliteConf extends AbstractArpConf<SqliteConf> {
   public String toJdbcConnectionString() {
     final String database = checkNotNull(this.database, "Missing database.");
 
-    return String.format("jdbc:sqlite:%s", database);
+    return String.format("jdbc:firebird:%s", database);
   }
 
   @Override

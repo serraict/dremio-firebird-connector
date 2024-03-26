@@ -22,8 +22,8 @@
 
   <groupId>com.dremio.plugin</groupId>
   <version>${version.dremio}</version>
-  <artifactId>dremio-sqlite-plugin</artifactId>
-  <name>Dremio SQLite Community Connector Serra</name>
+  <artifactId>dremio-firebird-plugin</artifactId>
+  <name>Dremio Firebird Community Connector</name>
 
   <properties>
     <version.dremio>24.3.2-202401241821100032-d2d8a497</version.dremio>
