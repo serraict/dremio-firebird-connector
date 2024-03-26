@@ -37,7 +37,7 @@ import io.protostuff.Tag;
  * Configuration for SQLite sources.
  */
 @SourceType(value = "SQLITE", label = "SQLite", uiConfig = "sqlite-layout.json", externalQuerySupported = true)
-public class SqliteConf extends AbstractArpConf<SqliteConf> {
+public class SqliteSerraConf extends AbstractArpConf<SqliteConf> {
   private static final String ARP_FILENAME = "arp/implementation/sqlite-arp.yaml";
   private static final ArpDialect ARP_DIALECT =
       AbstractArpConf.loadArpFile(ARP_FILENAME, (ArpDialect::new));
