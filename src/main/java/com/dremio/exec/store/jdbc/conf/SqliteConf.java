@@ -37,10 +37,9 @@ import io.protostuff.Tag;
  * Configuration for SQLite sources.
  */
 @SourceType(value = "SQLITE", label = "SQLite", uiConfig = "sqlite-layout.json", externalQuerySupported = true)
-public class SqliteSerraConf extends AbstractArpConf<SqliteConf> {
+public class SqliteConf extends AbstractArpConf<SqliteConf> {
   private static final String ARP_FILENAME = "arp/implementation/sqlite-arp.yaml";
-  private static final ArpDialect ARP_DIALECT =
-      AbstractArpConf.loadArpFile(ARP_FILENAME, (ArpDialect::new));
+  private static final ArpDialect ARP_DIALECT = AbstractArpConf.loadArpFile(ARP_FILENAME, (ArpDialect::new));
   private static final String DRIVER = "org.sqlite.JDBC";
 
   @NotBlank
@@ -53,15 +52,19 @@ public class SqliteSerraConf extends AbstractArpConf<SqliteConf> {
   @NotMetadataImpacting
   public int fetchSize = 200;
 
-//  If you've written your source prior to Dremio 16, and it allows for external query via a flag like below, you should
-//  mark the flag as @JsonIgnore and remove use of the flag since external query support is now managed by the SourceType
-//  annotation and if the user has been granted the EXTERNAL QUERY permission (enterprise only). Marking the flag as @JsonIgnore
-//  will hide the external query tickbox field, but allow your users to upgrade Dremio without breaking existing source
-//  configurations. An example of how to dummy this out is commented out below.
-//  @Tag(3)
-//  @NotMetadataImpacting
-//  @JsonIgnore
-//  public boolean enableExternalQuery = false;
+  // If you've written your source prior to Dremio 16, and it allows for external
+  // query via a flag like below, you should
+  // mark the flag as @JsonIgnore and remove use of the flag since external query
+  // support is now managed by the SourceType
+  // annotation and if the user has been granted the EXTERNAL QUERY permission
+  // (enterprise only). Marking the flag as @JsonIgnore
+  // will hide the external query tickbox field, but allow your users to upgrade
+  // Dremio without breaking existing source
+  // configurations. An example of how to dummy this out is commented out below.
+  // @Tag(3)
+  // @NotMetadataImpacting
+  // @JsonIgnore
+  // public boolean enableExternalQuery = false;
 
   @Tag(4)
   @DisplayMetadata(label = "Maximum idle connections")
@@ -83,23 +86,22 @@ public class SqliteSerraConf extends AbstractArpConf<SqliteConf> {
   @Override
   @VisibleForTesting
   public JdbcPluginConfig buildPluginConfig(
-          JdbcPluginConfig.Builder configBuilder,
-          CredentialsService credentialsService,
-          OptionManager optionManager
-  ) {
+      JdbcPluginConfig.Builder configBuilder,
+      CredentialsService credentialsService,
+      OptionManager optionManager) {
     return configBuilder.withDialect(getDialect())
-            .withDialect(getDialect())
-            .withFetchSize(fetchSize)
-            .withDatasourceFactory(this::newDataSource)
-            .clearHiddenSchemas()
-            .addHiddenSchema("SYSTEM")
-            .build();
+        .withDialect(getDialect())
+        .withFetchSize(fetchSize)
+        .withDatasourceFactory(this::newDataSource)
+        .clearHiddenSchemas()
+        .addHiddenSchema("SYSTEM")
+        .build();
   }
 
   private CloseableDataSource newDataSource() {
     return DataSources.newGenericConnectionPoolDataSource(DRIVER,
-      toJdbcConnectionString(), null, null, null, DataSources.CommitMode.DRIVER_SPECIFIED_COMMIT_MODE,
-            maxIdleConns, idleTimeSec);
+        toJdbcConnectionString(), null, null, null, DataSources.CommitMode.DRIVER_SPECIFIED_COMMIT_MODE,
+        maxIdleConns, idleTimeSec);
   }
 
   @Override
