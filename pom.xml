@@ -74,8 +74,8 @@
   <distributionManagement>
       <repository>
           <id>github</id>
-          <name>GitHub Serra Apache Maven Packages</name>
-          <url>https://maven.pkg.github.com/Serra/dremio-sqllite-connector</url>
+          <name>GitHub Serra ICT Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/serraict/dremio-firebird-connector</url>
       </repository>
   </distributionManagement>
   

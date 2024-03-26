@@ -17,6 +17,6 @@ The connector is publicly available, easily installable and useful.
 
 ## Backlog
 
-* Remove everything SQLLite and replace it with Firebird
-* Remove SQLLite JDC connector references (code and docs)
+* Remove everything SQLite and replace it with Firebird
+* Remove SQLite JDC connector references (code and docs)
 * Document how to test (consider adding testing environment in this repo?)
