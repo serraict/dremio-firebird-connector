@@ -38,7 +38,7 @@ import io.protostuff.Tag;
  */
 @SourceType(value = "Firebird", label = "Firebird", uiConfig = "firebird-layout.json", externalQuerySupported = true)
 public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
-  private static final String ARP_FILENAME = "arp/implementation/Firebird-arp.yaml";
+  private static final String ARP_FILENAME = "arp/implementation/firebird-arp.yaml";
   private static final ArpDialect ARP_DIALECT = AbstractArpConf.loadArpFile(ARP_FILENAME, (ArpDialect::new));
   private static final String DRIVER = "org.firebird.JDBC";
 
