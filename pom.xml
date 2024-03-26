@@ -68,7 +68,14 @@
     <repository>
       <id>dremio-free</id>
       <url>https://maven.dremio.com/free/</url>
-    </repository>    
+    </repository>
+      <repository>
+        <id>github</id>
+        <url>https://maven.pkg.github.com/serra/dremio-sqllite-connector</url>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+      </repository>    
   </repositories>
 </project>
 
