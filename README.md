@@ -6,7 +6,7 @@
 
 1. In root directory with the pom.xml file run `mvn clean install`
 2. Take the resulting .jar file in the target folder and put it in the \dremio\jars folder in Dremio
-3. ❌ Take the Jaybird JDBC driver from (https://github.com/xerial/sqlite-jdbc) and put in in the \dremio\jars\3rdparty folder
+3. ❌ Take the Jaybird JDBC driver from [Jaybird download page](https://firebirdsql.org/en/jdbc-driver/) and put in in the \dremio\jars\3rdparty folder
 4. Restart Dremio
 
 ## Adding a SQLite Source in Dremio
