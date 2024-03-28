@@ -40,31 +40,17 @@ import io.protostuff.Tag;
 public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   private static final String ARP_FILENAME = "arp/implementation/firebird-arp.yaml";
   private static final ArpDialect ARP_DIALECT = AbstractArpConf.loadArpFile(ARP_FILENAME, (ArpDialect::new));
-  private static final String DRIVER = "org.firebird.JDBC";
+  private static final String DRIVER = "org.firebirdsql.jdbc";
 
   @NotBlank
   @Tag(1)
-  @DisplayMetadata(label = "Database")
-  public String database;
+  @DisplayMetadata(label = "Database connection string")
+  public String connectionString = "jdbc:firebirdsql://localhost:3050/dremio_test?user=SYSDBA&password=masterkey";
 
   @Tag(2)
   @DisplayMetadata(label = "Record fetch size")
   @NotMetadataImpacting
   public int fetchSize = 200;
-
-  // If you've written your source prior to Dremio 16, and it allows for external
-  // query via a flag like below, you should
-  // mark the flag as @JsonIgnore and remove use of the flag since external query
-  // support is now managed by the SourceType
-  // annotation and if the user has been granted the EXTERNAL QUERY permission
-  // (enterprise only). Marking the flag as @JsonIgnore
-  // will hide the external query tickbox field, but allow your users to upgrade
-  // Dremio without breaking existing source
-  // configurations. An example of how to dummy this out is commented out below.
-  // @Tag(3)
-  // @NotMetadataImpacting
-  // @JsonIgnore
-  // public boolean enableExternalQuery = false;
 
   @Tag(4)
   @DisplayMetadata(label = "Maximum idle connections")
@@ -78,9 +64,8 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
 
   @VisibleForTesting
   public String toJdbcConnectionString() {
-    final String database = checkNotNull(this.database, "Missing database.");
 
-    return String.format("jdbc:firebird:%s", database);
+    return this.connectionString;
   }
 
   @Override

@@ -1,5 +1,5 @@
 {
-  "sourceType": "SQLITE",
+  "sourceType": "FIREBIRD",
   "metadataRefresh": {
     "datasetDiscovery": true
   },
@@ -14,7 +14,7 @@
             "layout": "row",
             "elements": [
               {
-                "propName": "config.database",
+                "propName": "config.connectionString",
                 "validate": {
                   "isRequired": true
                 }
