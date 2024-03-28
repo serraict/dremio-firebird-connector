@@ -1,6 +1,7 @@
 #!/bin/bash
+SCRIPT_DIR=$(dirname "$0")
 MVN_CMD='mvn dependency:get'
-TARGET_DIR='../target/3rdparty'
+TARGET_DIR="$SCRIPT_DIR/../target/3rdparty"
 
 #Jaybird
 GROUP_ID_JAYBIRD='org.firebirdsql.jdbc'

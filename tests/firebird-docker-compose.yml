@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+
+  firebird:
+    image: jacobalberty/firebird:v4.0.1
+    container_name: firebird
+    ports: 
+      - 3050:3050
+    env_file: ./.env
+    volumes:
+      - firebird:/firebird
+
+volumes:
+  firebird:
+    driver: local
+  
