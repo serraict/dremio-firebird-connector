@@ -56,7 +56,7 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
 
   public FirebirdConf() {
     super();
-    logger.debug("FirebirdConf constructor called");
+    logger.debug("FirebirdConf constructor called with dialect " + ARP_DIALECT);
   }
 
   @NotBlank
