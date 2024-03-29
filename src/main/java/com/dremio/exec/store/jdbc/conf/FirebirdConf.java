@@ -21,6 +21,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.dremio.exec.catalog.conf.DisplayMetadata;
 import com.dremio.exec.catalog.conf.NotMetadataImpacting;
+import com.dremio.exec.catalog.conf.Secret;
 import com.dremio.exec.catalog.conf.SourceType;
 import com.dremio.exec.store.jdbc.CloseableDataSource;
 import com.dremio.exec.store.jdbc.DataSources;
@@ -69,12 +70,12 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   @NotMetadataImpacting
   public int fetchSize = 200;
 
-  @Tag(4)
+  @Tag(3)
   @DisplayMetadata(label = "Maximum idle connections")
   @NotMetadataImpacting
   public int maxIdleConns = 8;
 
-  @Tag(5)
+  @Tag(4)
   @DisplayMetadata(label = "Connection idle time (s)")
   @NotMetadataImpacting
   public int idleTimeSec = 60;
