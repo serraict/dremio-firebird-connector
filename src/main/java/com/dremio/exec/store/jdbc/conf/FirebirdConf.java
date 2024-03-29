@@ -30,6 +30,10 @@ import com.dremio.options.OptionManager;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.dremio.services.credentials.CredentialsService;
 import com.google.common.annotations.VisibleForTesting;
+import org.apache.hadoop.yarn.webapp.example.MyApp;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.protostuff.Tag;
 
@@ -38,14 +42,27 @@ import io.protostuff.Tag;
  */
 @SourceType(value = "Firebird", label = "Firebird", uiConfig = "firebird-layout.json", externalQuerySupported = true)
 public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
+  private static final Logger logger = LoggerFactory.getLogger(FirebirdConf.class);
+
   private static final String ARP_FILENAME = "arp/implementation/firebird-arp.yaml";
-  private static final ArpDialect ARP_DIALECT = AbstractArpConf.loadArpFile(ARP_FILENAME, (ArpDialect::new));
+
+  private static final ArpDialect createDialect() {
+    logger.debug("createDialect called");
+    return AbstractArpConf.loadArpFile(ARP_FILENAME, (ArpDialect::new));
+  }
+
+  private static final ArpDialect ARP_DIALECT = createDialect();
   private static final String DRIVER = "org.firebirdsql.jdbc";
+
+  public FirebirdConf() {
+    super();
+    logger.debug("FirebirdConf constructor called");
+  }
 
   @NotBlank
   @Tag(1)
   @DisplayMetadata(label = "Database connection string")
-  public String connectionString = "jdbc:firebirdsql://localhost:3050/dremio_test?user=SYSDBA&password=masterkey";
+  public String connectionString = "jdbc:firebirdsql://firebird:3050/dremio_test?user=SYSDBA&password=masterkey";
 
   @Tag(2)
   @DisplayMetadata(label = "Record fetch size")
@@ -64,7 +81,7 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
 
   @VisibleForTesting
   public String toJdbcConnectionString() {
-
+    logger.debug("toJdbcConnectionString called");
     return this.connectionString;
   }
 
@@ -74,16 +91,22 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
       JdbcPluginConfig.Builder configBuilder,
       CredentialsService credentialsService,
       OptionManager optionManager) {
-    return configBuilder.withDialect(getDialect())
-        .withDialect(getDialect())
-        .withFetchSize(fetchSize)
-        .withDatasourceFactory(this::newDataSource)
-        .clearHiddenSchemas()
-        .addHiddenSchema("SYSTEM")
-        .build();
+    logger.debug("buildPluginConfig called");
+    try {
+      return configBuilder.withDialect(getDialect())
+          .withDialect(getDialect())
+          .withFetchSize(fetchSize)
+          .withDatasourceFactory(this::newDataSource)
+          .clearHiddenSchemas()
+          .addHiddenSchema("SYSTEM")
+          .build();
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to create FirebirdConf.", e);
+    }
   }
 
   private CloseableDataSource newDataSource() {
+    logger.debug("newDataSource called");
     return DataSources.newGenericConnectionPoolDataSource(DRIVER,
         toJdbcConnectionString(), null, null, null, DataSources.CommitMode.DRIVER_SPECIFIED_COMMIT_MODE,
         maxIdleConns, idleTimeSec);
@@ -91,11 +114,13 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
 
   @Override
   public ArpDialect getDialect() {
+    logger.debug("getDialect called" + ARP_DIALECT);
     return ARP_DIALECT;
   }
 
   @VisibleForTesting
   public static ArpDialect getDialectSingleton() {
+    logger.debug("getDialectSingleton called" + ARP_DIALECT);
     return ARP_DIALECT;
   }
 }

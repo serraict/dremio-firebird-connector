@@ -37,51 +37,6 @@ data_types:
       dremio:
         name: "integer"
       required_cast_arguments: "none"
-    - source:
-        name: "REAL"
-      dremio:
-        name: "double"
-      required_cast_arguments: "none"
-    - source:
-        name: "VARCHAR"
-      dremio:
-        name: "varchar"
-      required_cast_arguments: "none"
-    - source:
-        name: "CHAR"
-      dremio:
-        name: "char"
-      required_cast_arguments: "none"
-    - source:
-        name: "BLOB"
-      dremio:
-        name: "blob"
-      required_cast_arguments: "none"
-    - source:
-        name: "DATE"
-      dremio:
-        name: "date"
-      required_cast_arguments: "none"
-    - source:
-        name: "TIME"
-      dremio:
-        name: "time"
-      required_cast_arguments: "none"
-    - source:
-        name: "TIMESTAMP"
-      dremio:
-        name: "timestamp"
-      required_cast_arguments: "none"
-    - source:
-        name: "NUMERIC"
-      dremio:
-        name: "numeric"
-      required_cast_arguments: "none"
-    - source:
-        name: "DECIMAL"
-      dremio:
-        name: "decimal"
-      required_cast_arguments: "none"
 
 relational_algebra:
   aggregation:
