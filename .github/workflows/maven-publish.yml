@@ -31,9 +31,6 @@ jobs:
         cache-dependency-path: ${{ github.workspace }}/pom.xml
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
-
-    - name: Display Java Cache Key
-      run: echo "Java Cache key = ${{ steps.setup-jdk.outputs.cache-key }}"
   
     - name: Generate settings.xml
       run: |
@@ -54,9 +51,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build with Maven
-      run: mvn -B package -Drevision=${{ steps.get_version.outputs.VERSION }} --file pom.xml -Dmaven.repo.local=.m2/repository
+      run: mvn -B package -Drevision=${{ steps.get_version.outputs.VERSION }} --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -Drevision=${{ steps.get_version.outputs.VERSION }} -Dmaven.repo.local=.m2/repository
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -Drevision=${{ steps.get_version.outputs.VERSION }}
       env:
         GITHUB_TOKEN: ${{ github.token }} 
