@@ -21,7 +21,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.dremio.plugin</groupId>
-  <version>${version.dremio}</version>
+  <version>${revision}</version>
   <artifactId>dremio-firebird-plugin</artifactId>
   <name>Dremio Firebird Community Connector</name>
 
