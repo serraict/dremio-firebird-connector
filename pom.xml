@@ -29,7 +29,7 @@
     <version.dremio>24.3.2-202401241821100032-d2d8a497</version.dremio>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
+  <!-- cahnge in POM to trigger a cache invalidation -->
   <dependencies>
     <dependency>
       <groupId>com.dremio.community.plugins</groupId>
