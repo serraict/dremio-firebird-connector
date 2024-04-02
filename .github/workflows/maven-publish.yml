@@ -51,9 +51,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build with Maven
-      run: mvn -B package -Drevision=${{ steps.get_version.outputs.VERSION }} --file pom.xml
+      run: mvn -B package -Drevision=${{ steps.get_version.outputs.VERSION }} --file pom.xml -Dmaven.repo.local=.m2/repository
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -Drevision=${{ steps.get_version.outputs.VERSION }}
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -Drevision=${{ steps.get_version.outputs.VERSION }} -Dmaven.repo.local=.m2/repository
       env:
         GITHUB_TOKEN: ${{ github.token }} 
