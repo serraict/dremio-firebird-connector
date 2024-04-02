@@ -8,10 +8,20 @@ services:
     ports: 
       - 3050:3050
     env_file: ./.env
-    volumes:
-      - firebird:/firebird
+    networks:
+      - dbnetwork    
+    
+  init_db:
+    image: jacobalberty/firebird:v4.0.1
+    depends_on:
+      - firebird
+    volumes: 
+      - ./sql/:/docker-entrypoint-initdb.d/
+      - ./wait-for-it.sh:/usr/local/firebird/bin/wait-for-it.sh
+      - ./entrypoint.sh:/usr/local/firebird/bin/entrypoint.sh
+    command: ["/usr/local/firebird/bin/wait-for-it.sh", "firebird:3050", "/usr/local/firebird/bin/entrypoint.sh"]
+    networks:
+      - dbnetwork
 
-volumes:
-  firebird:
-    driver: local
-  
+networks:
+  dbnetwork:
