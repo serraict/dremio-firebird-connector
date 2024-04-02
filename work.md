@@ -12,6 +12,7 @@ The connector is publicly available, easily installable and useful.
 
 ## Doing
 
+Speed up build by caching dependencies.
 
 ## Backlog
 
