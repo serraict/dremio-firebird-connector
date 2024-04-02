@@ -13,7 +13,8 @@ The connector is publicly available, easily installable and useful.
 ## Doing
 
 Speed up build by caching dependencies.
-The cache is being saved, but somehow never retrieved, although the key is the same every time.
+The cache is being saved, but somehow never retrieved, 
+although the key is the same every time.
 
 ## Backlog
 
