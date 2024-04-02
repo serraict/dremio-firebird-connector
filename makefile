@@ -4,7 +4,7 @@ target/3rdparty:
 	mkdir -p target/3rdparty
 	./scripts/download_dependencies.sh 
 build:
-	mvn clean install
+	mvn clean install -Drevision=$$(git describe --tags)
 release:
 	@if [ -n "$$(git status --porcelain)" ]; then \
 		echo "There are uncommitted changes or untracked files"; \
