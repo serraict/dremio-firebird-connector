@@ -54,7 +54,7 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -Drevision=${{ steps.get_version.outputs.VERSION }}
       env:
-        GITHUB_TOKEN: ${{ github.token }} 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
     # new steps for creating a release and uploading a file to it
     - name: Create Release
