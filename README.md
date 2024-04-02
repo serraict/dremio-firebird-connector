@@ -4,8 +4,8 @@
 
 ## Building and Installation
 
-1. In root directory with the pom.xml file run `make build`
-2. Take the resulting .jar file in the target folder and put it in the `/dremio/jars` folder in Dremio
+1. Download the [latest release jar from Github](https://github.com/serraict/dremio-firebird-connector/releases/)''
+2. Take the resulting .jar file in the target folder and put it in the `/dremio/jars` folder in Dremio'
 3. Run `./scripts/get_jaybird.sh` to download the [JDBC driver](https://firebirdsql.org/en/jdbc-driver/).
    It will be stored in `./target/3rdparty` and put in in the `/dremio/jars/3rdparty` folder
 4. Restart Dremio
@@ -26,7 +26,7 @@ make firebird
 ```
 
 This starts a docker container running firebird.
-On the first run, the database gets initialized with test data. 
+On the first run, the database gets initialized with test data.
 
 ### Requirements
 
