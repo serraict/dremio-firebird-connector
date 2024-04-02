@@ -4,7 +4,7 @@
 
 ## Building and Installation
 
-1. In root directory with the pom.xml file run `mvn clean install`
+1. In root directory with the pom.xml file run `make build`
 2. Take the resulting .jar file in the target folder and put it in the `/dremio/jars` folder in Dremio
 3. Run `./scripts/get_jaybird.sh` to download the [JDBC driver](https://firebirdsql.org/en/jdbc-driver/).
    It will be stored in `./target/3rdparty` and put in in the `/dremio/jars/3rdparty` folder
@@ -16,6 +16,20 @@ Once the connector has been added, log in to Dremio.
 Inside Dremio, click on the plus sign to add a new data source,
 ❌ and select Firebird from the list of available sources.
 ❌ In the 'New Firebird Source' window enter a name and the name of a Firebird database to connect to and click Save.
+
+## Development
+
+To run a local test database:
+
+```shell
+make firebird
+```
+
+### Requirements
+
+* java version ?
+* Tested with Docker v25.0.3, earlier versions might work too.
+* Tested with Dremio version 24.3.2-202401241821100032-d2d8a497
 
 ## References
 
