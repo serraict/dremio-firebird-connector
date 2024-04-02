@@ -12,7 +12,6 @@ The connector is publicly available, easily installable and useful.
 
 ## Doing
 
-Speed up java build.
 
 ## Backlog
 

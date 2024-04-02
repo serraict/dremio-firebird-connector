@@ -25,6 +25,9 @@ To run a local test database:
 make firebird
 ```
 
+This starts a docker container running firebird.
+On the first run, the database gets initialized with test data. 
+
 ### Requirements
 
 * java version ?
