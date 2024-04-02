@@ -10,11 +10,11 @@ release:
 		echo "There are uncommitted changes or untracked files"; \
 		exit 1; \
 	fi
-	@if [ "$$(git rev-parse --abbrev-ref HEAD)" != "main" ]; then \
-		echo "Not on main branch"; \
+	@if [ "$$(git rev-parse --abbrev-ref HEAD)" != "master" ]; then \
+		echo "Not on master branch"; \
 		exit 1; \
 	fi
-	@if [ "$$(git rev-parse HEAD)" != "$$(git rev-parse origin/main)" ]; then \
+	@if [ "$$(git rev-parse HEAD)" != "$$(git rev-parse origin/master)" ]; then \
 		echo "Local branch is ahead of origin"; \
 		exit 1; \
 	fi
