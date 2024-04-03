@@ -41,7 +41,7 @@ import io.protostuff.Tag;
 /**
  * Configuration for Firebird sources.
  */
-@SourceType(value = "Firebird", label = "Firebird", uiConfig = "firebird-layout.json", externalQuerySupported = true)
+@SourceType(value = "FIREBIRD", label = "Firebird", uiConfig = "firebird-layout.json", externalQuerySupported = true)
 public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   private static final Logger logger = LoggerFactory.getLogger(FirebirdConf.class);
 
@@ -53,7 +53,7 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   }
 
   private static final ArpDialect ARP_DIALECT = createDialect();
-  private static final String DRIVER = "org.firebirdsql.jdbc";
+  private static final String DRIVER = "org.firebirdsql.jdbc.FBDriver";
 
   public FirebirdConf() {
     super();
