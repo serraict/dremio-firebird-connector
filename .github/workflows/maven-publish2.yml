@@ -27,15 +27,15 @@ jobs:
   
     - name: Set version
       run: |
-        echo "version=${git describe --tags}" >> "$GITHUB_ENV"
+        echo "version=$(git describe --tags)" >> "$GITHUB_ENV"
 
-    - name: Package
-      run: make package
+    # - name: Package
+    #   run: make package
 
-    - name: Publish to GitHub Packages Apache Maven
-      run: make publish
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+    # - name: Publish to GitHub Packages Apache Maven
+    #   run: make publish
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
     # new steps for creating a release and uploading a file to it
     - name: Create Release
@@ -49,13 +49,13 @@ jobs:
         draft: false
         prerelease: false
 
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} 
-        asset_path: ./target/dremio-firebird-plugin-${{ env.version }}.jar
-        asset_name: dremio-firebird-plugin-${{ env.version }}.jar
-        asset_content_type: application/java-archive
+    # - name: Upload Release Asset
+    #   id: upload-release-asset 
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+    #     asset_path: ./target/dremio-firebird-plugin-${{ env.version }}.jar
+    #     asset_name: dremio-firebird-plugin-${{ env.version }}.jar
+    #     asset_content_type: application/java-archive
