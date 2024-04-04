@@ -1,10 +1,14 @@
 .phony : all
+
+VERSION := $(shell git describe --tags)
+
 #
 target/3rdparty:
 	mkdir -p target/3rdparty
 	./scripts/download_dependencies.sh 
 build:
-	mvn clean install -Drevision=$$(git describe --tags)
+	@echo "Building version $(VERSION)..."
+	mvn clean install -Drevision=$(VERSION)
 release:
 	@if [ -n "$$(git status --porcelain)" ]; then \
 		echo "There are uncommitted changes or untracked files"; \
@@ -18,7 +22,7 @@ release:
 		echo "Local branch is ahead of origin"; \
 		exit 1; \
 	fi
-	@echo "Current version is $$(git describe --tags)"
+	@echo "Current version is $(VERSION)"
 	@git push origin --tags
 # Firebird
 firebird:
