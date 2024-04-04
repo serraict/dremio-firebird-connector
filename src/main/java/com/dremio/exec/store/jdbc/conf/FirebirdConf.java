@@ -15,28 +15,28 @@
  */
 package com.dremio.exec.store.jdbc.conf;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import javax.validation.constraints.NotBlank;
 
 import com.dremio.exec.catalog.conf.DisplayMetadata;
 import com.dremio.exec.catalog.conf.NotMetadataImpacting;
-import com.dremio.exec.catalog.conf.Secret;
 import com.dremio.exec.catalog.conf.SourceType;
 import com.dremio.exec.store.jdbc.CloseableDataSource;
 import com.dremio.exec.store.jdbc.DataSources;
 import com.dremio.exec.store.jdbc.JdbcPluginConfig;
 import com.dremio.exec.store.jdbc.dialect.arp.ArpDialect;
 import com.dremio.options.OptionManager;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.dremio.services.credentials.CredentialsService;
 import com.google.common.annotations.VisibleForTesting;
-import org.apache.hadoop.yarn.webapp.example.MyApp;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.protostuff.Tag;
+
+// unused imports we might need later, commented out now to satisfy linter:
+// import com.fasterxml.jackson.annotation.JsonIgnore;
+// import com.dremio.exec.catalog.conf.Secret;
+// import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Configuration for Firebird sources.
