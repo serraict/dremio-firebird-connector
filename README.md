@@ -42,3 +42,8 @@ On the first run, the database gets initialized with test data.
 * <https://github.com/serra/dremio-sqllite-connector>
 
 
+## compile gradle
+
+```shell
+./gradlew clean jar
+```
