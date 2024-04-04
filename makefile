@@ -5,6 +5,17 @@ ifeq ($(VERSION),)
     VERSION := 0.0.1
 endif
 
+# ----------------------------------------------
+# CI
+# ----------------------------------------------
+package:
+	mvn -B package -Drevision=$(VERSION) --file pom.xml
+publish:
+	mvn -B deploy -Drevision=$(VERSION) --file pom.xml
+
+# ----------------------------------------------
+# Local development
+# ----------------------------------------------
 target/3rdparty:
 	mkdir -p target/3rdparty
 	./scripts/download_dependencies.sh 
