@@ -1,8 +1,10 @@
 .phony : all
 
 VERSION := $(shell git describe --tags)
+ifeq ($(VERSION),)
+    VERSION := 0.0.1
+endif
 
-#
 target/3rdparty:
 	mkdir -p target/3rdparty
 	./scripts/download_dependencies.sh 
