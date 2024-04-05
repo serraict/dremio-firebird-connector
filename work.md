@@ -12,13 +12,10 @@ The connector is publicly available, easily installable and useful.
 
 ## Doing
 
-* add username and password as a configuration option
-
 ## Backlog
 
-* Create a first version of the adapter that can read integers from a test database.
-* Easy test database setup so that contributors can quickly verify their work.
-* Document how to test (consider adding testing environment in this repo?)
+* Test with a firebird 2.5 server
+* Test in production-like environment
 
 ## Known issues
 

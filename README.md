@@ -1,8 +1,8 @@
 # Dremio ARP Firebird Connector
 
-❌ not verified
+⚠️ this connector needs testing and should not be considered production-ready.
 
-## Building and Installation
+## Installation
 
 1. Download the [latest release jar from Github](https://github.com/serraict/dremio-firebird-connector/releases/)''
 2. Take the resulting .jar file in the target folder and put it in the `/dremio/jars` folder in Dremio'
@@ -12,10 +12,12 @@
 
 ## Adding a Firebird Source in Dremio
 
-Once the connector has been added, log in to Dremio.
+Once the connector has been installed, log in to Dremio.
 Inside Dremio, click on the plus sign to add a new data source,
-❌ and select Firebird from the list of available sources.
-❌ In the 'New Firebird Source' window enter a name and the name of a Firebird database to connect to and click Save.
+and select Firebird from the list of available sources.
+In the 'New Firebird Source' window enter 
+[your Jaybird JDBC connection string](https://firebirdsql.github.io/jaybird-manual/jaybird_manual.html#connection-drivermanager)
+and credentials, and hit `Save`.
 
 ## Development
 
@@ -26,9 +28,11 @@ make firebird
 ```
 
 This starts a docker container running firebird.
+It will be available on port 3050 on the host,
+and on a docker network named `serra-vine`.
 On the first run, the database gets initialized with test data.
 
-To test on Serra Vine, run:
+To test on the Dremio instance hosted by Serra Vine, run:
 
 ```shell
 make test_on_serra_vine
@@ -36,7 +40,7 @@ make test_on_serra_vine
 
 ### Requirements
 
-* java version ?
+* Java version 8 and 11, Dremio plugins require Java 8.
 * Tested with Docker v25.0.3, earlier versions might work too.
 * Tested with Dremio version 24.3.2-202401241821100032-d2d8a497
 
