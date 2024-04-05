@@ -63,7 +63,7 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   @NotBlank
   @Tag(1)
   @DisplayMetadata(label = "Database connection string")
-  public String connectionString = "jdbc:firebirdsql://firebird:3050/test_dremio?user=SYSDBA&password=masterkey";
+  public String connectionString = "jdbc:firebirdsql://firebird:3050/test_dremio.fdb";
 
   @Tag(2)
   @DisplayMetadata(label = "Record fetch size")
@@ -109,7 +109,7 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   private CloseableDataSource newDataSource() {
     logger.debug("newDataSource called");
     return DataSources.newGenericConnectionPoolDataSource(DRIVER,
-        toJdbcConnectionString(), null, null, null, DataSources.CommitMode.DRIVER_SPECIFIED_COMMIT_MODE,
+        toJdbcConnectionString(), "SYSDBA", "masterkey", null, DataSources.CommitMode.DRIVER_SPECIFIED_COMMIT_MODE,
         maxIdleConns, idleTimeSec);
   }
 
