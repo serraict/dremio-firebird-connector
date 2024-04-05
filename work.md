@@ -12,9 +12,7 @@ The connector is publicly available, easily installable and useful.
 
 ## Doing
 
-* connect to the database
-  * figure out the right connection string from jaybird docs
-  * pass in credentials correctly, not as query string
+* add username and password as a configuration option
 
 ## Backlog
 
