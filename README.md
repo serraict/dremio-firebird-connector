@@ -45,5 +45,11 @@ make test_on_serra_vine
 * Forked from [dremio-sqllite-connector](https://github.com/dremio-hub/dremio-sqllite-connector).
 * <https://community.dremio.com/t/support-for-firebird-databases/503>
 * [Jaybird JDBC connector for Firebird](https://firebirdsql.github.io/jaybird-manual/jaybird_manual.html)
-* <https://github.com/serra/dremio-sqllite-connector>
 
+Some reference implementations for other databases:
+
+* <https://github.com/serra/dremio-sqllite-connector>
+* <https://github.com/narendrans/dremio-snowflake/>
+* <https://github.com/mmsmdali/dremio-clickhouse-arp-connector>
+* <https://github.com/luciodaza/dremio-vertica-connector/>
+* <https://github.com/Uqai-dev/dremio-db2-plugin> (by @dacopan)
