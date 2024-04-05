@@ -4,7 +4,7 @@
 
 ## Installation
 
-1. Download the [latest release jar from Github](https://github.com/serraict/dremio-firebird-connector/releases/)''
+1. Download the [latest release jar from Github](https://github.com/serraict/dremio-firebird-connector/releases/)
 2. Take the resulting .jar file in the target folder and put it in the `/dremio/jars` folder in Dremio'
 3. Run `./scripts/get_jaybird.sh` to download the [JDBC driver](https://firebirdsql.org/en/jdbc-driver/).
    It will be stored in `./target/3rdparty` and put in in the `/dremio/jars/3rdparty` folder
@@ -15,7 +15,7 @@
 Once the connector has been installed, log in to Dremio.
 Inside Dremio, click on the plus sign to add a new data source,
 and select Firebird from the list of available sources.
-In the 'New Firebird Source' window enter 
+In the 'New Firebird Source' window enter
 [your Jaybird JDBC connection string](https://firebirdsql.github.io/jaybird-manual/jaybird_manual.html#connection-drivermanager)
 and credentials, and hit `Save`.
 
