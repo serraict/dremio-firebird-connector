@@ -43,8 +43,12 @@ firebird:
 stop_firebird:
 	docker compose -f ./tests/firebird-docker-compose.yml down
 # tests
-setup_test: build target/3rdparty
-	docker cp ./target/dremio-firebird-plugin*.jar dremio:/opt/dremio/jars/
-	docker cp ./target/3rdparty/. dremio:/opt/dremio/jars/3rdparty/
-	docker restart dremio
+test_on_serra_vine: build target/3rdparty
+	docker stop dremio || true
+	docker run -v serra-vine_dremio-jars:/tmp --name janitor -d alpine tail -f /dev/null
+	docker exec -it janitor sh -c 'rm -f /tmp/dremio-firebird*.jar'
+	docker cp ./target/dremio-firebird-plugin*.jar janitor:/tmp/
+	docker cp ./target/3rdparty/. janitor:/tmp/3rdparty/
+	docker rm -f janitor
+	docker start dremio
 	

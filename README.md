@@ -28,6 +28,12 @@ make firebird
 This starts a docker container running firebird.
 On the first run, the database gets initialized with test data.
 
+To test on Serra Vine, run:
+
+```shell
+make test_on_serra_vine
+```
+
 ### Requirements
 
 * java version ?
@@ -40,5 +46,4 @@ On the first run, the database gets initialized with test data.
 * <https://community.dremio.com/t/support-for-firebird-databases/503>
 * [Jaybird JDBC connector for Firebird](https://firebirdsql.github.io/jaybird-manual/jaybird_manual.html)
 * <https://github.com/serra/dremio-sqllite-connector>
-
 

@@ -63,7 +63,7 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   @NotBlank
   @Tag(1)
   @DisplayMetadata(label = "Database connection string")
-  public String connectionString = "jdbc:firebirdsql://host.docker.internal:3050/test_dremio?user=SYSDBA&password=masterkey";
+  public String connectionString = "jdbc:firebirdsql://firebird:3050/test_dremio?user=SYSDBA&password=masterkey";
 
   @Tag(2)
   @DisplayMetadata(label = "Record fetch size")
