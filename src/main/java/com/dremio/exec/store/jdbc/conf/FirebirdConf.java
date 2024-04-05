@@ -19,6 +19,7 @@ import javax.validation.constraints.NotBlank;
 
 import com.dremio.exec.catalog.conf.DisplayMetadata;
 import com.dremio.exec.catalog.conf.NotMetadataImpacting;
+import com.dremio.exec.catalog.conf.Secret;
 import com.dremio.exec.catalog.conf.SourceType;
 import com.dremio.exec.store.jdbc.CloseableDataSource;
 import com.dremio.exec.store.jdbc.DataSources;
@@ -35,8 +36,7 @@ import io.protostuff.Tag;
 
 // unused imports we might need later, commented out now to satisfy linter:
 // import com.fasterxml.jackson.annotation.JsonIgnore;
-// import com.dremio.exec.catalog.conf.Secret;
-// import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Configuration for Firebird sources.
@@ -65,24 +65,34 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   @DisplayMetadata(label = "Database connection string")
   public String connectionString = "jdbc:firebirdsql://firebird:3050/test_dremio.fdb";
 
+  @NotBlank
   @Tag(2)
+  @DisplayMetadata(label = "Username")
+  public String username = "SYSDBA";
+
+  @NotBlank
+  @Tag(3)
+  @DisplayMetadata(label = "Password")
+  @Secret
+  public String password = "masterkey";
+
+  @Tag(6)
   @DisplayMetadata(label = "Record fetch size")
   @NotMetadataImpacting
   public int fetchSize = 200;
 
-  @Tag(3)
+  @Tag(7)
   @DisplayMetadata(label = "Maximum idle connections")
   @NotMetadataImpacting
   public int maxIdleConns = 8;
 
-  @Tag(4)
+  @Tag(8)
   @DisplayMetadata(label = "Connection idle time (s)")
   @NotMetadataImpacting
   public int idleTimeSec = 60;
 
   @VisibleForTesting
   public String toJdbcConnectionString() {
-    logger.debug("toJdbcConnectionString called");
     return this.connectionString;
   }
 
@@ -107,9 +117,11 @@ public class FirebirdConf extends AbstractArpConf<FirebirdConf> {
   }
 
   private CloseableDataSource newDataSource() {
-    logger.debug("newDataSource called");
+    final String username = checkNotNull(this.username, "Missing username.");
+    final String password = checkNotNull(this.password, "Missing password.");
+
     return DataSources.newGenericConnectionPoolDataSource(DRIVER,
-        toJdbcConnectionString(), "SYSDBA", "masterkey", null, DataSources.CommitMode.DRIVER_SPECIFIED_COMMIT_MODE,
+        toJdbcConnectionString(), username, password, null, DataSources.CommitMode.DRIVER_SPECIFIED_COMMIT_MODE,
         maxIdleConns, idleTimeSec);
   }
 

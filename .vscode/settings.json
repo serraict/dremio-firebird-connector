@@ -6,6 +6,7 @@
         "fasterxml",
         "firebirdsql",
         "jdbc",
+        "masterkey",
         "SYSDBA"
     ]
 }
