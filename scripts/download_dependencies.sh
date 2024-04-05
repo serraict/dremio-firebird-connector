@@ -6,7 +6,7 @@ TARGET_DIR="$SCRIPT_DIR/../target/3rdparty"
 #Jaybird
 GROUP_ID_JAYBIRD='org.firebirdsql.jdbc'
 ARTIFACT_ID_JAYBIRD='jaybird'
-VERSION_JAYBIRD='5.0.4.java11'
+VERSION_JAYBIRD='5.0.4.java8'
 JAR_JAYBIRD="$HOME/.m2/repository/org/firebirdsql/jdbc/$ARTIFACT_ID_JAYBIRD/$VERSION_JAYBIRD/$ARTIFACT_ID_JAYBIRD-$VERSION_JAYBIRD.jar"
 
 # JNA
