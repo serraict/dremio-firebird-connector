@@ -39,9 +39,10 @@ release:
 	@git push origin --tags
 # Firebird
 firebird:
-	docker compose -f ./tests/firebird-docker-compose.yml up
+	@docker network create serra-vine 2>/dev/null || true
+	@docker compose -f ./tests/firebird-docker-compose.yml up
 stop_firebird:
-	docker compose -f ./tests/firebird-docker-compose.yml down
+	@docker compose -f ./tests/firebird-docker-compose.yml down
 # tests
 test_on_serra_vine: build target/3rdparty
 	docker stop dremio || true
