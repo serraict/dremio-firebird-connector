@@ -1,6 +1,7 @@
 # Dremio ARP Firebird Connector
 
-⚠️ this connector needs testing and should not be considered production-ready.
+Althoough this connector needs testing and should not be considered production-ready,
+I have been running it in a production environment for several months now without any significant problem.
 
 ## Installation
 
